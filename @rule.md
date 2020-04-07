@@ -1,34 +1,32 @@
 # @rule
 
+`@rule` 是指示 CSS 行为的语句。
+
 ## @charset
 
-提示浏览器或其他应用该 CSS 文件的编码方式
+定义 CSS 文件的编码方式。
+
+```css
+@charset "utf-8";
+```
 
 ## @import
 
 引入另一个 css 文件。
 
 ```css
-@import [ <url> | <string> ] [ supports(
-    [ <supports-condition> | <declaration> ]
-  ) ]? <media-query-list>?;
-
-// first.css
-@import "second.css";
+/* final.css */
+@import "first.css";
 ```
 
-当 HTML 中引入 first.css 后，会先发起对 first.css 的请求，之后发起对 second.css 的请求。而不是一开始两个 css 文件会自动合并。;
+当 HTML 中引入 `final.css` 后，会先发起对 `final.css` 的请求，之后发起对 `first.css` 的请求，而不是一开始两个 css 文件会自动合并。
 
 ## @media
 
-对设备类型进行判断，从而应用不同的 CSS。media 区块内，是普通规则。[具体应用可参考](http://jsfiddle.net/DrSRT/)
+根据不同设备应用不同的 CSS。media 区块内，是普通规则。
 
 ```css
-@media print {
-  body {
-    font-size: 10pt;
-  }
-}
+@media mediatype and | not | only (media feature) { css-code; }
 
 @media screen and (min-width: 761px) {
   body {
@@ -50,7 +48,7 @@
 
 ## @counter-style
 
-产生一种数据，用于定义列表项的表现。注意，只有少部分浏览器实现了这个功能。其他浏览器只能用已经定义好的 list-style。
+产生一种数据，用于定义列表项的表现。注意，只有少部分浏览器实现了这个功能。其他浏览器只能用已经定义好的 `list-style`。
 
 ```html
 <style>
@@ -72,7 +70,7 @@
 
 ## @keyframes
 
-产生一种数据，用于定义动画关键帧。下面的代码，Forza Juventus!!这些文本会从屏幕右边移动到屏幕左边。
+产生一种数据，用于定义动画关键帧。下面的代码中，`Forza Juventus!!` 这些文本会从屏幕右边移动到屏幕左边。
 
 ```html
 <style>
@@ -122,11 +120,7 @@ fontface 用于定义一种字体，icon font 技术就是利用这个特性来�
 </html>
 ```
 
-注意，由于 mdn 网站的设置，上面的代码会遇到跨域问题，会导致 Bitstream Vera Serif Bold 字体不能下载。
-
-### 网页上设置字体的方法
-
-网页上设置字体的方法有两种
+网页上设置字体的方法有两种：
 
 ```html
 <!-- 方法1： 使用 Google Fonts 等直接加载 -->
@@ -180,7 +174,7 @@ fontface 用于定义一种字体，icon font 技术就是利用这个特性来�
 
 ## @supports
 
-检查环境特性,与 media 类似。
+检查环境特性,与 @media 类似。
 
 ```html
 <html>
@@ -240,11 +234,11 @@ fontface 用于定义一种字体，icon font 技术就是利用这个特性来�
 </html>
 ```
 
-上面代码在各个浏览器的表现：
+上面代码在各个浏览器的表现不同：
 
-- Chrome: 支持@supports, 支持 mix-blend-mode: overlay
-- Edge: 支持@supports,不支持 mix-blend-mode: overlay
-- IE: 不支持@supports
+- Chrome: 支持 `@supports`, 支持 `mix-blend-mode: overlay`
+- Edge: 支持 `@supports`,不支持 `mix-blend-mode: overlay`
+- IE: 不支持 `@supports`
 
 ## @namespace
 
@@ -252,4 +246,4 @@ fontface 用于定义一种字体，icon font 技术就是利用这个特性来�
 
 ## @viewport
 
-用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被 html 中的 `<meta name="viewport" content="width=device-width, initial-scale=1.0" />` 代替。
+用于设置视口的一些特性，不过兼容性目前不是很好，多数时候被 HTML 中的 `<meta name="viewport" content="width=device-width, initial-scale=1.0" />` 代替。
